@@ -42,7 +42,10 @@ namespace Services.Services
 
         public IEnumerable<Producto> GetAll()
         {
-            throw new NotImplementedException();
+            using (var ctx=new ApplicationDbContext())
+            {
+               return ctx.Set<Producto>().ToList();
+            }
         }
 
         public IEnumerable<Producto> SingleOrDefault(Expression<Func<Producto, bool>> predicate)
